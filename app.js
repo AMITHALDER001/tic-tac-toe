@@ -4,7 +4,7 @@ let newGameBtn=document.querySelector("#new-btn");
 let msgContainer=document.querySelector(".msg-container");
 let msg=document.querySelector("#msg");
 
-let turn0=true; //playerX,player0
+let turnO=true; //playerX,playerO
 const winPatterns=[
     [0,1,2],
     [0,3,6],
@@ -17,7 +17,7 @@ const winPatterns=[
 ];
 
 const resetGame=()=>{
-    turn0=true;
+    turnO=true;
     enableBoxes();
     msgContainer.classList.add("hide");
 };
@@ -26,12 +26,14 @@ const resetGame=()=>{
 boxes.forEach((box)=>{
     box.addEventListener("click",()=>{
         console.log("box was clicked");
-        if(turn0){
-            box.innerText="o";
-            turn0=false;
+        if(turnO){
+            box.innerText="O";
+            box.classList.add("playerO");
+            turnO=false;
         }else{
             box.innerText="X";
-            turn0=true;
+             box.classList.add("playerX");
+            turnO=true;
         }
         box.disabled=true;
 
@@ -48,6 +50,7 @@ const enableBoxes=()=>{
     for(let box of boxes){
         box.disabled=false;
         box.innerText="";
+        box.classList.remove("playerO", "playerX");
     }
 };
 
@@ -71,8 +74,25 @@ const checkWinner=()=>{
             if(pos1Val === pos2Val && pos2Val === pos3Val){
                 console.log("Winner",pos1Val);
                 showWinner(pos1Val);
+                return ; //stop checking
             }
         }
+    }
+
+    // Check for draw
+    let isDraw = true;
+
+    for (let box of boxes) {
+        if (box.innerText === "") {
+            isDraw = false;
+            break;
+        }
+    }
+
+    if (isDraw) {
+        msg.innerText = "Game is a Draw!";
+        msgContainer.classList.remove("hide");
+        disableBoxes();
     }
 };
 
