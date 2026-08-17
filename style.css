@@ -19,7 +19,7 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap:10px;
+    gap:2vmin;
 }
 .box{
     height:18vmin;
@@ -29,7 +29,6 @@ body{
     border: none;
     box-shadow: 5px 5px 5px rgba(137, 107, 86, 0.771);
     font-size: 3rem;
-    color:red;
 }
 #reset{
     height:40px;
@@ -40,7 +39,7 @@ body{
     font-size:15px;
 }
 #new-btn{
-    height:40px;
+    height:30px;
     width:100px;
     border-radius: 5px;
     background-color: #EF6905;
@@ -49,10 +48,17 @@ body{
 }
 #msg{
     color:black;
-    font-size: 50px;
+    font-size:5vmin;
+    line-height:1.2;
+    padding:10px;
 }
 .msg-container{
     height:15vmin;
+    height:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding: 10px;
 }
 .hide{
     display:none;
